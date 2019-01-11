@@ -19,23 +19,21 @@ class ShelfBookList extends React.Component {
 			}));
 			console.log(this.state.shelfBooks);
 		});
-
 	}
 
 	render(){
 		return(
-				<ol className="books-grid">
-					{
-						this.state.shelfBooks.map( (book, key) => (
-							<li key={book[key].id}>
-								<Book title={book[key].title} author="" thumbnail={book[key].imageLinks.thumbnail}/>
+			<ol className="books-grid">
+				{
+					this.state.shelfBooks.map( (books) => ( books.map( (book) => (
+							<li key={book.id}>
+								<Book title={book.title} author={book.authors} thumbnail={book.imageLinks.thumbnail}/>
 							</li>
-						))
-					}
-				</ol>
+					))))
+				}
+			</ol>
 		);
 	}
-
 }
 
 export default ShelfBookList;
