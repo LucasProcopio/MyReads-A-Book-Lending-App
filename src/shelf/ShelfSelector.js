@@ -1,5 +1,5 @@
 import React from 'react'
-import * as BooksAPI from './BooksAPI'
+import * as BooksAPI from '../BooksAPI'
 import PropTypes from 'prop-types'
 
 class ShelfSelector extends React.Component {
@@ -15,7 +15,7 @@ class ShelfSelector extends React.Component {
   	if(prevProps.book.shelf !== this.state.shelf){
   		BooksAPI.update(this.props.book, this.state.shelf)
   		.then( () => {
-  			this.props.callBack();
+  			if(typeof this.props.callBack !== 'undefined')this.props.callBack();
   		});
   	}
   }
@@ -37,8 +37,8 @@ class ShelfSelector extends React.Component {
 
 ShelfSelector.propTypes = {
 	book: PropTypes.object.isRequired,
-	bookShelf: PropTypes.string.isRequired,
-	callBack: PropTypes.func.isRequired
+	bookShelf: PropTypes.string,
+	callBack: PropTypes.func
 }
 
 export default ShelfSelector;
