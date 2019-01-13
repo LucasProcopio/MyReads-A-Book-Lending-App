@@ -196,3 +196,8 @@ button:active {
   text-align: center;
   font-size: 0.8em;
 }
+
+.skeleton-placeholder {
+  width: 45% !important;
+  height: 10% !important;
+}

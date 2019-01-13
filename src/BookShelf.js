@@ -1,21 +1,24 @@
 import React from 'react';
 import BookList from './BookList'
+import PropTypes from 'prop-types'
 
-class BookShelf extends React.Component {
 
-	render(){
-		const { shelfName, shelfType } = this.props;
-		return(
-			<div>
+const BookShelf = props => (
+		<div>
 		    <div className="bookshelf">
-		      <h2 className="bookshelf-title">{shelfName}</h2>
+		      <h2 className="bookshelf-title">{props.shelfName}</h2>
 		      <div className="bookshelf-books">
-		      	<BookList shelf={ shelfType } />
+		      	<BookList callBack={props.callBack} bookList={props.bookList} shelf={props.shelfType} />
 		      </div>
 		    </div>
-    	</div>
-		);
-	}
+  	</div>
+	);
+
+BookShelf.propTypes = {
+	shelfName: PropTypes.string.isRequired,
+	shelfType: PropTypes.string.isRequired,
+	bookList: PropTypes.array.isRequired,
+	callBack: PropTypes.func.isRequired
 }
 
 export default BookShelf;
