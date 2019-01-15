@@ -7,7 +7,7 @@ import { ToastContainer, toast } from 'react-toastify'
 import 'react-toastify/dist/ReactToastify.css'
 import './App.css'
 
-class BooksApp extends React.Component {
+class BooksApp extends React.Component{
 
   state = {
     bookList: [],
@@ -29,7 +29,6 @@ class BooksApp extends React.Component {
   }
 
   render() {
-
     return (
       <div className="app">
         <Route exact path="/" render={ () => (
@@ -48,7 +47,9 @@ class BooksApp extends React.Component {
             </div>
           </div>
         )} />
-        <Route extact path="/search" component={SearchPage}/>
+        <Route extact path="/search" render={(props) => (
+          <SearchPage callBack={this.updateBookShelf} myBookList={this.state.bookList}/>
+        )}/>
       </div>
     )
   }

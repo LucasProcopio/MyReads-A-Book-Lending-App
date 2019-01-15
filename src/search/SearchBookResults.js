@@ -6,7 +6,7 @@ class SearchBooksResults extends React.Component {
 	render() {
 		return(
 			<div className="search-books-results">
-				<BookList bookList={this.props.bookList} />
+				<BookList callBack={this.props.callBack} bookList={this.props.bookList} />
 			</div>
 		);
 	}

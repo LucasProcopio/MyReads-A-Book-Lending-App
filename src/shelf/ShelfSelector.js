@@ -2,7 +2,7 @@ import React from 'react'
 import * as BooksAPI from '../BooksAPI'
 import PropTypes from 'prop-types'
 
-class ShelfSelector extends React.Component {
+class ShelfSelector extends React.PureComponent {
 	state = {
 		shelf: this.props.bookShelf,
 	}
@@ -11,11 +11,11 @@ class ShelfSelector extends React.Component {
   	this.setState({shelf: event.target.value});
   }
 
-  componentDidUpdate(prevProps, prevState) {
+  componentDidUpdate(prevProps) {
   	if(prevProps.book.shelf !== this.state.shelf){
   		BooksAPI.update(this.props.book, this.state.shelf)
   		.then( () => {
-  			if(typeof this.props.callBack !== 'undefined')this.props.callBack();
+  			this.props.callBack();
   		});
   	}
   }
