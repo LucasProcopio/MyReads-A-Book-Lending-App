@@ -1,6 +1,7 @@
 import React from 'react'
 import SearchBar from './SearchBar'
 import SearchBookResults from './SearchBookResults'
+import PropTypes from 'prop-types'
 
 class SearchPage extends React.Component {
 	
@@ -8,6 +9,11 @@ class SearchPage extends React.Component {
 		bookList: [],
 	}
 
+	/**
+	 *  @description Checks if a book is found
+	 *  @param {object} books list of books found by the search input field
+	 *  @returns boolean
+	 */
 	validateBookList = books => {
 		if(typeof books === 'undefined' || typeof books.error !== 'undefined'){
 			this.setState({bookList: []});
@@ -17,13 +23,21 @@ class SearchPage extends React.Component {
 		}
 	}
 
-	setBookShelf = (bookFound) => {
+	/**
+	 * @description Set a shelf value to a book found by the search input field
+	 * @param {object} bookFound a book found by the search input field
+	 */
+	setBookShelf = bookFound => {
 		this.props.myBookList.map( 
 			bookList => bookList.map( book => bookFound.id === book.id ? bookFound.shelf = book.shelf : false 
 		));
 		if (typeof bookFound.shelf === 'undefined') bookFound.shelf = 'none';
 	}
 
+	/**
+	 * @description Update bookList
+	 * @param {object} books list of books found by the search input field
+	 */
 	updateBookList = books => {
 		if(this.validateBookList(books)){
 			books.map( book => this.setBookShelf(book));
@@ -40,5 +54,10 @@ class SearchPage extends React.Component {
 		);
 	}
 }
-	
+
+SearchPage.propTypes = {
+	callBack: PropTypes.func.isRequired,
+	myBookList: PropTypes.array.isRequired
+}
+
 export default SearchPage;

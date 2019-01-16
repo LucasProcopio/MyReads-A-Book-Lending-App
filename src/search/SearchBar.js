@@ -1,6 +1,7 @@
 import React from 'react'
 import SearchForm from './SearchForm'
 import { Link } from 'react-router-dom'
+import PropTypes from 'prop-types'
 
 const SearchBar = props => {
 	return(
@@ -9,6 +10,10 @@ const SearchBar = props => {
 			<SearchForm callBack={props.callBack} />
 		</div>
 	);
+}
+
+SearchBar.propTypes = {
+	callBack: PropTypes.func.isRequired
 }
 
 export default SearchBar;

@@ -1,5 +1,6 @@
 import React from 'react'
 import { search } from '../BooksAPI'
+import PropTypes from 'prop-types'
 
 class SearchForm extends React.Component {
 	state = {
@@ -10,11 +11,19 @@ class SearchForm extends React.Component {
 		this.setState({value: event.target.value});
 	}
 
+	/**
+	 * @description Handles search input field values to display 
+	 * correct data in the search page
+	 * 
+	 * @param {string} query input field value
+	 */
 	handleSearch = (query) => {
-		if(query.length > 0){
+		if(query.trim() !== ''){
 			search(query).then( (books) => {
 				this.props.callBack(books);
 			});
+		} else {
+			this.props.callBack([]);
 		}
 	}
 
@@ -31,6 +40,10 @@ class SearchForm extends React.Component {
 			</div>
 		);
 	}
+}
+
+SearchForm.propTypes = {
+	callBack: PropTypes.func.isRequired
 }
 
 export default SearchForm;

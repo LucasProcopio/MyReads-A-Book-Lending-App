@@ -2,17 +2,25 @@ import React from 'react'
 import ShelfSelector from './ShelfSelector'
 import PropTypes from 'prop-types'
 
-const handleBookImage = (book) => {
+/**
+ * @description rather or not shows the book cover if it exists
+ * @param {object} book 
+ */
+const handleBookImage = book => {
 	return typeof book.imageLinks !== 'undefined' ?
 	book.imageLinks.thumbnail : 'http://books.google.com/books/content?id=NLK2AAAAIAAJ&printsec=frontcover&img=1&zoom=1&source=gbs_api';
 }
 
-const handleBookAuthor = (book) => {
+/**
+ * @description rather or not shows the book authors if an author exists
+ * @param {object} book 
+ */
+const handleBookAuthor = book => {
 	return typeof book.authors !== 'undefined' ?
 	book.authors : ['Unknown Author'];
 }
 
-const Book = (props) => (
+const Book = props => (
 	<div className="book">
 	  <div className="book-top">
 	    <div className="book-cover" style={{ width: 128, height: 193, backgroundImage: `url(${handleBookImage(props.book)})` }}></div>
@@ -25,7 +33,7 @@ const Book = (props) => (
 
 Book.propTypes = {
 	book: PropTypes.object.isRequired,
-	callBack: PropTypes.func,
+	callBack: PropTypes.func.isRequired,
 }
 
 export default Book;

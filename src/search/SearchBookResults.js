@@ -1,6 +1,6 @@
 import React from 'react'
 import BookList from '../shelf/BookList'
-
+import PropTypes from 'prop-types'
 class SearchBooksResults extends React.Component {
 
 	render() {
@@ -10,6 +10,11 @@ class SearchBooksResults extends React.Component {
 			</div>
 		);
 	}
+}
+
+SearchBooksResults.propTypes = {
+	callBack: PropTypes.func.isRequired,
+	bookList: PropTypes.array.isRequired
 }
 
 export default SearchBooksResults;

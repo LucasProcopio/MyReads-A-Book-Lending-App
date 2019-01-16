@@ -7,7 +7,10 @@ class ShelfSelector extends React.PureComponent {
 		shelf: this.props.bookShelf,
 	}
 
-  handleChange = (event) => {
+	/**
+	 * @description Handles select input change
+	 */
+  handleChange = event => {
   	this.setState({shelf: event.target.value});
   }
 
@@ -38,7 +41,7 @@ class ShelfSelector extends React.PureComponent {
 ShelfSelector.propTypes = {
 	book: PropTypes.object.isRequired,
 	bookShelf: PropTypes.string,
-	callBack: PropTypes.func
+	callBack: PropTypes.func.isRequired
 }
 
 export default ShelfSelector;

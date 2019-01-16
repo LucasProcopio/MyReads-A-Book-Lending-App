@@ -4,11 +4,16 @@ import PropTypes from 'prop-types'
 
 class BookList extends React.Component {
 
+  /**
+   * @description Handles Shelf book list placement
+   * @param {object} bookList 
+   * @param {string} shelf the book shelf
+   */
 	shelfBookList = (bookList, shelf) => {
 		if(typeof shelf !== 'undefined')
 			return bookList.map( (books) => ( books.filter( (book) => ( book.shelf === shelf ))));
-
-		 return [bookList];
+    
+    return [bookList];
 	}
 
 	render(){
@@ -33,7 +38,7 @@ class BookList extends React.Component {
 BookList.propTypes = {
 	bookList: PropTypes.array.isRequired,
 	shelf: PropTypes.string,
-	callBack: PropTypes.func,
+	callBack: PropTypes.func.isRequired,
 }
 
 export default BookList;
