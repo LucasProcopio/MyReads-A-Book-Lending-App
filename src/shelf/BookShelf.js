@@ -4,15 +4,15 @@ import PropTypes from 'prop-types'
 
 
 const BookShelf = props => (
-		<div>
-		    <div className="bookshelf">
-		      <h2 className="bookshelf-title">{props.shelfName}</h2>
-		      <div className="bookshelf-books">
-		      	<BookList callBack={props.callBack} bookList={props.bookList} shelf={props.shelfType} />
-		      </div>
-		    </div>
-  	</div>
-	);
+	<div>
+		<div className="bookshelf">
+			<h2 className="bookshelf-title">{props.shelfName}</h2>
+			<div className="bookshelf-books">
+			<BookList callBack={props.callBack} bookList={props.bookList} shelf={props.shelfType} />
+			</div>
+		</div>
+	</div>
+);
 
 BookShelf.propTypes = {
 	shelfName: PropTypes.string.isRequired,

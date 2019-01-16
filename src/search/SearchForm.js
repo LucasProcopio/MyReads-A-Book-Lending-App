@@ -1,5 +1,6 @@
 import React from 'react'
 import { search } from '../BooksAPI'
+import { debounce } from 'throttle-debounce'
 import PropTypes from 'prop-types'
 
 class SearchForm extends React.Component {
@@ -27,16 +28,23 @@ class SearchForm extends React.Component {
 		}
 	}
 
+	/**
+	 * @description Limits the rate of handleSearch calls
+	 * 
+	 * @param  {string} query input field value
+	 */
+	handlDebounce = debounce(500, this.handleSearch);
+
 	componentDidUpdate(prevProps, prevState){
 		if(prevState.value !== this.state.value){
-			this.handleSearch(this.state.value);
+			this.handlDebounce(this.state.value)
 		}
 	}
 
 	render(){
 		return(
 			<div className="search-books-input-wrapper">
-					<input type="text" value={this.state.value} onChange={this.handleChange} placeholder="Search by title or author"/>
+				<input type="text" value={this.state.value} onChange={this.handleChange} placeholder="Search by title or author"/>
 			</div>
 		);
 	}

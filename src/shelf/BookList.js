@@ -11,9 +11,9 @@ class BookList extends React.Component {
    */
 	shelfBookList = (bookList, shelf) => {
 		if(typeof shelf !== 'undefined')
-			return bookList.map( (books) => ( books.filter( (book) => ( book.shelf === shelf ))));
+			return bookList.filter( (book) => ( book.shelf === shelf ));
     
-    return [bookList];
+    	return bookList;
 	}
 
 	render(){
@@ -22,11 +22,11 @@ class BookList extends React.Component {
 			<div>
 				<ol className="books-grid">
 					{
-						this.shelfBookList(bookList, shelf).map( (books) => ( books.map( (book) => (
-							<li key={book.id}>
-								<Book callBack={callBack} book={book}/>
-							</li>
-						))))
+					this.shelfBookList(bookList, shelf).map( (book) => (
+						<li key={book.id}>
+							<Book callBack={callBack} book={book}/>
+						</li>
+					))
 					}
 				</ol>
 			</div>

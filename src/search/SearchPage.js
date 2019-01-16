@@ -29,8 +29,8 @@ class SearchPage extends React.Component {
 	 */
 	setBookShelf = bookFound => {
 		this.props.myBookList.map( 
-			bookList => bookList.map( book => bookFound.id === book.id ? bookFound.shelf = book.shelf : false 
-		));
+			book => bookFound.id === book.id ? bookFound.shelf = book.shelf : false 
+		);
 		if (typeof bookFound.shelf === 'undefined') bookFound.shelf = 'none';
 	}
 
